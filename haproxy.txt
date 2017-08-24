@@ -1,0 +1,24 @@
+# define frontend ( set any name for "http-in" section )
+frontend http-in
+    # listen 80
+    bind *:80
+    # set default backend
+    default_backend    backend_servers
+    # send X-Forwarded-For header
+    option             forwardfor
+
+# define backend
+backend backend_servers
+    # balance with source
+    balance            source
+    # define backend servers
+    server             server1 192.168.x.2:80 weight 50 check
+    server             server2 192.168.x.3:80 weight 50 check
+
+    errorfile 503 /etc/haproxy/errors/503-error.http
+    stats enable
+    stats hide-version
+    stats refresh 30s
+    stats show-node
+    stats auth admin:passwordnya
+    stats uri  /haproxy?monitoring
