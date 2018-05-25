@@ -1,9 +1,10 @@
-#DAFTAR# 
+# DAFTAR
 
 * .htaccess
 * haproxy
 
-## .htaccess
+## .htaccess  
+menyembunyikan kata index.php di address bar. Untuk menjalankan file .htaccess diperlukan web server Apache dan mengaktifkan rewrite module di Apache.
 
 ## haproxy  
 load balancer untuk web server
